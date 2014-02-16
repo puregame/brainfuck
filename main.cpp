@@ -12,7 +12,6 @@
 #include <errno.h>
 int *p;
 
-
 using namespace std;
 int doCommand(char command, ifstream &inStream);
 
@@ -27,12 +26,10 @@ int main(int argc, const char * argv[])
     string inFilePath;
     cin >> inFilePath;
     
-    in_file.open("/Users/matthewgougeon/Desktop/file.TXT", ios::binary);
     if (in_file.fail()){
         cout <<"file open failed";
     }
     while ((command = in_file.get()) != EOF){
-        //cout <<"got command: " <<command<<" "<< in_file.tellg() << endl;
         doCommand(command, in_file);
     }
     
@@ -78,10 +75,6 @@ int doCommand(char command, ifstream &inStream){
                 }
             }
             else{
-                //inStream.seekg(pos);
-                
-                
-                
                 while(true){//loop through next code
                     c = inStream.get();
                     if (c == ']'){
