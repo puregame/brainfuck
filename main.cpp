@@ -25,11 +25,13 @@ int main(int argc, const char * argv[])
     cout<<"What is the path of the input file? ";
     string inFilePath;
     cin >> inFilePath;
+    in_file.open(inFilePath.c_str());
     
     if (in_file.fail()){
         cout <<"file open failed";
     }
-    while ((command = in_file.get()) != EOF){
+    
+    while ((command = in_file.get()) != EOF){ //keep running commands until the end of the file
         doCommand(command, in_file);
     }
     
@@ -40,7 +42,7 @@ int main(int argc, const char * argv[])
 
 int doCommand(char command, ifstream &inStream){
     char c;
-    int pos;
+    long int pos;
     //cout << inStream.tellg()<<endl;
     
     
@@ -87,12 +89,11 @@ int doCommand(char command, ifstream &inStream){
                         }
                     }
                     else{// send command to doCommand
-                        doCommand(c, inStream);
+                        doCommand(c, inStream); //recursion is a beautiful thing
                         
                     }
                 }
             }
     }
-    
     return 0;
 }
