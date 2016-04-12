@@ -35,7 +35,6 @@ int main(int argc, const char * argv[])
         doCommand(command, in_file);
     }
     
-    //read size of the file and set a dynamic array to that size
     return 0;
 }
 
@@ -43,8 +42,6 @@ int main(int argc, const char * argv[])
 int doCommand(char command, ifstream &inStream){
     char c;
     long int pos;
-    //cout << inStream.tellg()<<endl;
-    
     
     switch(command){
         case '<':
@@ -67,7 +64,7 @@ int doCommand(char command, ifstream &inStream){
             break;
         case '[':
             pos = inStream.tellg();
-            if(*p==0){ // go to end of loop (to ]
+            if(*p==0){ // go to end of loop (to ])
                 int loopc = 0;
                 for (;;){
                     c = inStream.get();
@@ -77,7 +74,7 @@ int doCommand(char command, ifstream &inStream){
                 }
             }
             else{
-                while(true){//loop through next code
+                while(true){ //loop through next code
                     c = inStream.get();
                     if (c == ']'){
                         if (*p==0){ // end loop
